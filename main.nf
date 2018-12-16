@@ -109,17 +109,17 @@ process vcf_plot {
     when:
     !params.skip_plot_vcf
 
-		input:
-    set file vcf from vcf
+    input:
+    file vcf from vcf
 
-		output:
+    output:
     file 'Rplots.pdf' into plot
 
-		script:
+    script:
     """
     #!/usr/bin/env Rscript
 
-		library(vcfR)
+    library(vcfR)
     vcf_file <- "${vcf}"
     vcf <- read.vcfR(vcf_file, verbose = FALSE)
     plot(vcf)
